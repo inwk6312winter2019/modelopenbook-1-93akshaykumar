@@ -1,4 +1,13 @@
 def list_ifname_ip(fout):
+    '''
+    INPUT
+    fout - File of the object read in method
+
+    OUTPUT
+
+    RETURN
+    ip_dic - Dictionary of names as key and ip address, ip mask as value 
+    '''
     ip_dic={}  
     for line in fout:
         if 'no' not in line:
@@ -13,6 +22,16 @@ def list_ifname_ip(fout):
     return ip_dic
 
 def new_config_file(fout,fin):
+    '''
+    INPUT
+    fout - File of the object read in method
+    fin - File of the object to write
+
+    OUTPUT
+
+    RETURN
+    True - If All operations went Fine 
+    '''
     fout.seek(0)
     for line in fout:
         if 'ip address' in line and '.' in line:
@@ -37,6 +56,18 @@ def new_config_file(fout,fin):
     return True
 
 def get_access_list(fout):
+    '''
+    INPUT
+    fout - File of the object read in method
+    
+    OUTPUT
+    transit_access_in - access list of type transit_access_in
+    global_access - access list of type global_access
+    fw_management_access_in -  access list of type fw_management_access_in
+
+    RETURN
+    
+    '''
     fout.seek(0)
     transit_access_in=[]
     global_access=[]
